@@ -41,7 +41,7 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 			echo "INFO ! ts3server_minimal_runscript.sh found ... will not download."
 		else
 			echo "WARNING ! ts3server_minimal_runscript.sh not found ... will download new copy."
-				wget https://raw.githubusercontent.com/fithwum/teamspeak3/master/files/ts3server_minimal_runscript.sh -O /ts3temp/inifiles/ts3server_minimal_runscript.sh
+				wget https://raw.githubusercontent.com/fithwum/teamspeak3/master/scripts/ts3server_minimal_runscript.sh -O /ts3temp/inifiles/ts3server_minimal_runscript.sh
 				cp /ts3temp/inifiles/ts3server_minimal_runscript.sh /ts3server/
 				rm -frv /ts3temp/ts3server_minimal_runscript.sh
 	fi
