@@ -2,7 +2,7 @@ FROM alpine:latest
 MAINTAINER fithwum
 
 # URL's for files
-ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/teamspeak3/master/files/Install_Script.sh
+ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/teamspeak-alpine/master/files/Install_Script.sh
 
 # Install dependencies and folder creation
 RUN apk update && apk upgrade && apk add --no-cache ca-certificates libstdc++ su-exec bash-completion tar \
