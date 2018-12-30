@@ -9,7 +9,7 @@ CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
 # Main Install.
 if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 	then
-		echo "INFO ? ts3server ${TS_VERSION} files found ... running current docker."
+		echo "INFO ! ts3server ${TS_VERSION} files found ... running current docker."
 		# cd /ts3server
 		exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
 		exit 0
@@ -19,7 +19,7 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 # Download & unpack teamspeak3 files & move into /ts3server.
 	if [ -e "${CHANGELOG}" ]
 		then
-			echo "INFO ? ts3server is ${TS_VERSION} ... checking ini/sh files before running current docker."
+			echo "INFO ! ts3server is ${TS_VERSION} ... checking ini/sh files before running current docker."
 		else
 			echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
 				wget https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_alpine-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
@@ -38,7 +38,7 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 # Check if the ini/sh files exist in /ts3server and copy if needed.
 	if [ -e /ts3server/ts3server_minimal_runscript.sh ]
 		then
-			echo "INFO ? ts3server_minimal_runscript.sh found ... will not download."
+			echo "INFO ! ts3server_minimal_runscript.sh found ... will not download."
 		else
 			echo "WARNING ! ts3server_minimal_runscript.sh not found ... will download new copy."
 				wget https://raw.githubusercontent.com/fithwum/files-for-dockers/master/scripts/ts3server_minimal_runscript.sh -O /ts3temp/inifiles/ts3server_minimal_runscript.sh
@@ -47,7 +47,7 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 	fi
 	if [ -e /ts3server/ts3db_mariadb.ini ]
 		then
-			echo "INFO ? ts3db_mariadb.ini found ... will not download."
+			echo "INFO ! ts3db_mariadb.ini found ... will not download."
 		else
 			echo "WARNING ! ts3db_mariadb.ini not found ... will download new copy."
 				wget https://raw.githubusercontent.com/fithwum/files-for-dockers/master/files/ts3db_mariadb.ini -O /ts3temp/inifiles/ts3db_mariadb.ini
@@ -56,7 +56,7 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 	fi
 	if [ -e /ts3server/ts3server.ini ]
 		then
-			echo "INFO ? ts3server.ini found ... will not download."
+			echo "INFO ! ts3server.ini found ... will not download."
 		else
 			echo "WARNING ! ts3server.ini not found ... will download new copy."
 				wget https://raw.githubusercontent.com/fithwum/files-for-dockers/master/files/ts3server.ini -O /ts3temp/inifiles/ts3server.ini
@@ -74,7 +74,7 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 	sleep 1
 
 # run the server.
-	echo "INFO ? Starting ts3server ${TS_VERSION} ..."
+	echo "INFO ! Starting ts3server ${TS_VERSION} ..."
 	# cd /ts3server
 	exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
 fi
