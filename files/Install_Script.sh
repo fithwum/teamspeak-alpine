@@ -10,7 +10,6 @@ CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
 if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 	then
 		echo "INFO ! ts3server ${TS_VERSION} files found ... running current docker."
-		# cd /ts3server
 		exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
 		exit
 	else
@@ -75,7 +74,6 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 
 # run the server.
 	echo "INFO ! Starting ts3server ${TS_VERSION} ..."
-	# cd /ts3server
 	exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
 fi
 exit
