@@ -5,6 +5,7 @@
 # Teamspeak server version check.
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
+VERSION_CHECK="${CHANGELOG%_*}"
 
 # Main Install.
 if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
