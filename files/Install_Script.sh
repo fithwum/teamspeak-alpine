@@ -5,7 +5,7 @@
 # Teamspeak server version check.
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
-CHANGELOG_OLD=find ../ts3server -type f -iname "CHANGELOG*"
+CHANGELOG_OLD=/ts3server/CHANGELOG*
 CHANGELOG_NEW=CHANGELOG_${TS_VERSION}
 VERSION_CHECK="${CHANGELOG_OLD}"
 
