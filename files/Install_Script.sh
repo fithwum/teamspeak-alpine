@@ -9,7 +9,7 @@ CHANGELOG_OLD=find ../ts3server -type f -iname "CHANGELOG*"
 CHANGELOG_NEW=CHANGELOG_${TS_VERSION}
 VERSION_CHECK="${CHANGELOG_OLD}"
 
-# Main Install.
+# Main Install (alpine).
 if [ "${VERSION_CHECK}" = CHANGELOG_"${TS_VERSION}" ]
 	then
 		echo "INFO ! ts3server ${TS_VERSION} files found ... running current docker."
