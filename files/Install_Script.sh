@@ -10,7 +10,7 @@ CHANGELOG_NEW=CHANGELOG_${TS_VERSION}
 VERSION_CHECK="${CHANGELOG_OLD}"
 
 # Main Install.
-if [ "${VERSION_CHECK}" = "${CHANGELOG_NEW}" ]
+if [ "${VERSION_CHECK}" = CHANGELOG_"${TS_VERSION}" ]
 	then
 		echo "INFO ! ts3server ${TS_VERSION} files found ... running current docker."
 		exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
