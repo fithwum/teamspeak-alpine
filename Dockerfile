@@ -8,9 +8,9 @@ ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/teamspeak-alpine/ma
 RUN apk update && apk upgrade && apk add --no-cache ca-certificates libstdc++ su-exec bash-completion tar \
 	&& mkdir -p -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
 	&& chmod 777 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
-	&& chown 99:100 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
-	&& wget "${INSTALL_SCRIPT}" -O /ts3temp/Install_Script.sh \
-	&& chmod +x -v /ts3temp/Install_Script.sh
+	&& chown 99:100 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles
+ADD "${INSTALL_SCRIPT}" /ts3temp
+RUN chmod +x -v /ts3temp/Install_Script.sh
 
 # directory where data is stored
 VOLUME /ts3server
