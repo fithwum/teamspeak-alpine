@@ -9,16 +9,7 @@ CHANGELOG_OLD=../ts3server/CHANGELOG_[0-9].[0-9].[0-9]
 CHANGELOG_NEW=CHANGELOG_${TS_VERSION}
 # VERSION_CHECK=
 
-# Main Install (alpine).
-if [ "${CHANGELOG_OLD}" == CHANGELOG_"${TS_VERSION}" ]
-	then
-		echo "INFO ! ts3server ${TS_VERSION} files found ... running current docker."
-		exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
-		exit
-	else
-		echo "WARNING ! ts3server ${TS_VERSION} files not found, checking and installing new files as needed."
-
-# Download & unpack teamspeak3 files & move into /ts3server.
+# Download & unpack teamspeak3 files & move into /ts3server if needed.
 	if [ -e "${CHANGELOG}" ]
 		then
 			echo "INFO ! ts3server is ${TS_VERSION} ... checking ini/sh files before running current docker."
@@ -67,17 +58,16 @@ if [ "${CHANGELOG_OLD}" == CHANGELOG_"${TS_VERSION}" ]
 				rm -frv /ts3temp/inifiles/ts3server.ini
 	fi
 
-	sleep 1
+sleep 1
 
 # set permissions.
-	chown 99:100 -R /ts3server
-	chmod 776 -R /ts3server
-	chmod +x -v /ts3server/ts3server_minimal_runscript.sh
-	chmod +x -v /ts3server/ts3server
-	sleep 1
+chown 99:100 -R /ts3server
+chmod 776 -R /ts3server
+chmod +x -v /ts3server/ts3server_minimal_runscript.sh
+chmod +x -v /ts3server/ts3server
+sleep 1
 
 # run the server.
-	echo "INFO ! Starting ts3server ${TS_VERSION} ..."
-	exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
-fi
+echo "INFO ! Starting ts3server ${TS_VERSION} ..."
+exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
 exit
