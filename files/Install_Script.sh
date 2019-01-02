@@ -8,7 +8,7 @@ chmod 776 -R /ts3server
 # Teamspeak server version check.
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
-CHANGELOG_OLD=find ../ts3server -type f -name "CHANGELOG_[0-9].[0-9].[0-9]"
+CHANGELOG_OLD=../ts3server/CHANGELOG_[0-9].[0-9].[0-9]
 CHANGELOG_NEW=CHANGELOG_${TS_VERSION}
 # VERSION_CHECK=
 
