@@ -11,7 +11,7 @@ CHANGELOG_OLD=../ts3server/CHANGELOG_*
 # Download & unpack teamspeak3 files & move into /ts3server if needed.
 if [ -e "${CHANGELOG}" ]
 	then
-		echo "INFO ! ts3server is ${TS_VERSION} ... checking ini/sh files before running current docker."
+		echo "INFO ! ts3server is ${TS_VERSION} ... checking that ini/sh files exist before running current docker."
 	else
 		echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
 			rm -frv ${CHANGELOG_OLD}
