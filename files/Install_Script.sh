@@ -13,7 +13,13 @@ if [ -e "${CHANGELOG}" ]
 		echo "INFO ! ts3server is ${TS_VERSION} ... checking that ini/sh files exist before running current docker."
 	else
 		echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
+			sleep 1
+			cp -vR /ts3server/files/. /ts3temp/serverfiles/files/
+			cp -v /ts3server/("*.ini"|"*.sh") /ts3temp/serverfiles
 			rm -frv /ts3server/* !("files"|"*.ini"|"*.sh")
+			cp -vR /ts3temp/serverfiles/. /ts3server/
+			rm -fr /ts3temp/serverfiles/*
+			sleep 1
 			wget https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_alpine-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 			sleep 2
 			tar -xf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
