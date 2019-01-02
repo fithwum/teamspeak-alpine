@@ -22,13 +22,13 @@ if [ -e "${CHANGELOG}" ]
 			rm -fr /ts3temp/serverfiles/*
 			sleep 1
 			wget --no-cache https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_alpine-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
-			sleep 2
+			sleep 1
 			tar -xf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
-			sleep 2
+			sleep 1
 			rm -frv /ts3temp/serverfiles/ts3server_startscript.sh
 			rm -frv /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 			cp -uR /ts3temp/serverfiles/. /ts3server/
-			sleep 2
+			sleep 1
 			mv /ts3server/redist/libmariadb.so.2 /ts3server/libmariadb.so.2
 			mv /ts3server/CHANGELOG ${CHANGELOG}
 			rm -fr /ts3temp/serverfiles/*
