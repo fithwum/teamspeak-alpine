@@ -16,13 +16,14 @@ if [ -e "${CHANGELOG}" ]
 			sleep 1
 			echo "Clearing old teamspeak files and preserving settings/logs/userfiles."
 			echo "(this will take some time if you have uploaded many/large files)"
-			cp -R /ts3server/files/. /ts3temp/serverfiles/files/
-			cp -R /ts3server/logs/. /ts3temp/serverfiles/logs/
-			cp -v /ts3server/*.ini /ts3temp/serverfiles
-			cp -v /ts3server/*.sh /ts3temp/serverfiles
-			rm -fr /ts3server/*
-			cp -R /ts3temp/serverfiles/. /ts3server/
-			rm -fr /ts3temp/serverfiles/*
+			rm -frv !(files|logs|*.ini|*.sh)
+#			cp -R /ts3server/files/. /ts3temp/serverfiles/files/
+#			cp -R /ts3server/logs/. /ts3temp/serverfiles/logs/
+#			cp -v /ts3server/*.ini /ts3temp/serverfiles
+#			cp -v /ts3server/*.sh /ts3temp/serverfiles
+#			rm -fr /ts3server/*
+#			cp -R /ts3temp/serverfiles/. /ts3server/
+#			rm -fr /ts3temp/serverfiles/*
 			sleep 1
 			wget --no-cache https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_alpine-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 			sleep 1
