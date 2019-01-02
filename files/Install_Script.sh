@@ -16,10 +16,7 @@ if [ -e "${CHANGELOG}" ]
 			sleep 1
 			echo "Clearing old teamspeak files and preserving setting/logs/userfiles."
 			shopt -s extglob
-			cp -R /ts3server/!("files"|"logs"|"*.ini"|"*.sh") /ts3temp/serverfiles/
-			rm -fr /ts3server/*
-			cp -R /ts3temp/serverfiles/. /ts3server/
-			rm -fr /ts3temp/serverfiles/*
+			rm -fr /ts3server/!("files"|"logs"|"*.ini"|"*.sh")
 			sleep 1
 			wget --no-cache https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_alpine-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 			sleep 1
