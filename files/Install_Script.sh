@@ -16,7 +16,7 @@ if [ -e "${CHANGELOG}" ]
 			sleep 1
 			echo "Clearing old teamspeak files and preserving settings/logs/userfiles."
 			echo "(this will take some time if you have uploaded many/large files)"
-			rm -frv !(files|logs|*.ini|*.sh)
+			rm -frv !(files|logs|*.ini|*.sh) /ts3server/
 #			cp -R /ts3server/files/. /ts3temp/serverfiles/files/
 #			cp -R /ts3server/logs/. /ts3temp/serverfiles/logs/
 #			cp -v /ts3server/*.ini /ts3temp/serverfiles
