@@ -72,7 +72,7 @@ if [ "${CHANGELOG_OLD}" == CHANGELOG_"${TS_VERSION}" ]
 # set permissions.
 	chown 99:100 -R /ts3server
 	chmod 776 -R /ts3server
-	chmod +x -v /ts3server/ts3server_startscript.sh
+	chmod +x -v /ts3server/ts3server_minimal_runscript.sh
 	chmod +x -v /ts3server/ts3server
 	sleep 1
 
