@@ -13,7 +13,7 @@ chown 99:100 -R /ts3server
 chmod 777 -R /ts3server
 
 # Main Install (alpine).
-if [ "${CHANGELOG_OLD}" = CHANGELOG_"${TS_VERSION}" ]
+if [ "${CHANGELOG_OLD}" == CHANGELOG_"${TS_VERSION}" ]
 	then
 		echo "INFO ! ts3server ${TS_VERSION} files found ... running current docker."
 		exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
