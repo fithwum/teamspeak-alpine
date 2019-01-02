@@ -5,12 +5,12 @@
 # Teamspeak server version check.
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
-CHANGELOG_OLD=/ts3server/CHANGELOG*
+CHANGELOG_OLD=../ts3server/CHANGELOG*
 CHANGELOG_NEW=CHANGELOG_${TS_VERSION}
-VERSION_CHECK=${CHANGELOG_OLD}
+# VERSION_CHECK=
 
 # Main Install (alpine).
-if [ "${VERSION_CHECK}" = CHANGELOG_"${TS_VERSION}" ]
+if [ "${CHANGELOG_OLD}" = CHANGELOG_"${TS_VERSION}" ]
 	then
 		echo "INFO ! ts3server ${TS_VERSION} files found ... running current docker."
 		exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
