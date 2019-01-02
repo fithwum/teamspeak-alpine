@@ -15,8 +15,9 @@ if [ -e "${CHANGELOG}" ]
 		echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
 			sleep 1
 			cp -vR /ts3server/files/. /ts3temp/serverfiles/files/
-			cp -v /ts3server/("*.ini"|"*.sh") /ts3temp/serverfiles
-			rm -frv /ts3server/* !("files"|"*.ini"|"*.sh")
+			cp -v /ts3server/*.ini /ts3temp/serverfiles
+			cp -v /ts3server/*.sh /ts3temp/serverfiles
+			rm -frv /ts3server/*
 			cp -vR /ts3temp/serverfiles/. /ts3server/
 			rm -fr /ts3temp/serverfiles/*
 			sleep 1
