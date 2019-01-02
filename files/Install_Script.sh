@@ -2,9 +2,6 @@
 # Copyright (c) 2018 fithwum
 # All rights reserved
 
-chown 99:100 -R /ts3server
-chmod 776 -R /ts3server
-
 # Teamspeak server version check.
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
