@@ -16,8 +16,7 @@ if [ -e "${CHANGELOG}" ]
 			sleep 1
 			cp -R /ts3server/files/. /ts3temp/serverfiles/files/
 			cp -R /ts3server/logs/. /ts3temp/serverfiles/logs/
-			cp -v /ts3server/*.ini /ts3temp/serverfiles
-			cp -v /ts3server/*.sh /ts3temp/serverfiles
+			cp -v /ts3server/{*.ini,*.sh} /ts3temp/serverfiles
 			rm -fr /ts3server/*
 			cp -R /ts3temp/serverfiles/. /ts3server/
 			rm -fr /ts3temp/serverfiles/*
