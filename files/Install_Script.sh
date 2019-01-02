@@ -27,7 +27,7 @@ if [ "${CHANGELOG_OLD}" = CHANGELOG_"${TS_VERSION}" ]
 			echo "INFO ! ts3server is ${TS_VERSION} ... checking ini/sh files before running current docker."
 		else
 			echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
-				rm -frv /ts3server/CHANGELOG*
+				rm -frv ${CHANGELOG_OLD}
 				wget https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_alpine-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 				sleep 2
 				tar -xf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
