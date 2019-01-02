@@ -5,7 +5,6 @@
 # Teamspeak server version check.
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
-CHANGELOG_OLD=../ts3server/CHANGELOG_*
 
 # Main Install (alpine).
 # Download & unpack teamspeak3 files & move into /ts3server if needed.
@@ -56,6 +55,7 @@ if [ -e /ts3server/ts3server.ini ]
 			cp /ts3temp/inifiles/ts3server.ini /ts3server/
 			rm -frv /ts3temp/inifiles/ts3server.ini
 fi
+
 sleep 1
 
 # set permissions.
