@@ -19,13 +19,16 @@ if [ -e "${CHANGELOG}" ]
 	else
 		echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
 			sleep 1
-			echo "Clearing old teamspeak files and preserving settings/logs/userfiles."
-			echo "(this will take some time if you have uploaded many/large files)"
+			echo "INFO ! Preserving settings/logs/userfiles."
+			echo "INFO ! (this might take some time)"
 			cp -R /ts3server/files/. /ts3temp/serverfiles/files/
 			cp -R /ts3server/logs/. /ts3temp/serverfiles/logs/
 			cp /ts3server/*.ini /ts3temp/serverfiles
 			cp /ts3server/*.sh /ts3temp/serverfiles
+			echo "INFO ! Clearing old teamspeak files"
 			rm -fr /ts3server/*
+			echo "INFO ! Copying files back from temp folder"
+			echo "INFO ! (this might take some time)"
 			cp -R /ts3temp/serverfiles/. /ts3server/
 			rm -fr /ts3temp/serverfiles/*
 			sleep 1
