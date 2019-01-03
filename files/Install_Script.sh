@@ -2,6 +2,11 @@
 # Copyright (c) 2018 fithwum
 # All rights reserved
 
+TEXT="Checking latest teamspeak server version."
+wget --no-cache https://www.teamspeak.com/versions/server.json -O /ts3remp/server.json
+TS_VERSION_CHECK=$(cat server.json | grep version | head -1 | awk -F: '{print $4}' | sed 's/[",]//g' | sed "s/checksum//g")
+echo $TS_VERSION_CHECK
+
 # Variables.
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
