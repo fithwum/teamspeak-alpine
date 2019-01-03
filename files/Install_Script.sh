@@ -7,7 +7,6 @@ echo "${TEXT1}"
 wget --no-cache https://www.teamspeak.com/versions/server.json -O /ts3temp/server.json
 TS_VERSION_CHECK=$(cat /ts3temp/server.json | grep version | head -1 | awk -F: '{print $4}' | sed 's/[",]//g' | sed "s/checksum//g")
 echo "Current teamspeak server version:$TS_VERSION_CHECK"
-rm -frv /ts3temp/server.json
 
 # Variables.
 TS_VERSION="TS_VERSION_CHECK"
@@ -18,6 +17,7 @@ CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
 if [ -e "${CHANGELOG}" ]
 	then
 		echo "INFO ! ts3server is ${TS_VERSION} ... checking that ini/sh files exist before running current docker."
+		rm -frv /ts3temp/server.json
 	else
 		echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
 			sleep 1
@@ -42,6 +42,7 @@ if [ -e "${CHANGELOG}" ]
 			mv /ts3server/redist/libmariadb.so.2 /ts3server/libmariadb.so.2
 			mv /ts3server/CHANGELOG ${CHANGELOG}
 			rm -fr /ts3temp/serverfiles/*
+			rm -frv /ts3temp/server.json
 fi
 
 # Check if the ini/sh files exist in /ts3server and download/create if needed.
