@@ -10,6 +10,7 @@ TS_VERSION_CHECK=$(cat /ts3temp/server.json | grep version | head -1 | awk -F: '
 echo $TS_VERSION_CHECK
 echo "${TEXT2}"
 wget https://files.teamspeak-services.com/releases/server/${TS_VERSION_CHECK}/teamspeak3-server_linux_amd64-${TS_VERSION_CHECK}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION_CHECK}.tar.bz2
+ls
 rm -frv /ts3temp/ts3server_${TS_VERSION_CHECK}.tar.bz2
 
 # Variables.
