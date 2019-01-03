@@ -4,7 +4,7 @@
 
 TEXT="Checking latest teamspeak server version."
 wget --no-cache https://www.teamspeak.com/versions/server.json -O /ts3remp/server.json
-TS_VERSION_CHECK=$(cat server.json | grep version | head -1 | awk -F: '{print $4}' | sed 's/[",]//g' | sed "s/checksum//g")
+TS_VERSION_CHECK=$(cat /ts3temp/server.json | grep version | head -1 | awk -F: '{print $4}' | sed 's/[",]//g' | sed "s/checksum//g")
 echo $TS_VERSION_CHECK
 
 # Variables.
