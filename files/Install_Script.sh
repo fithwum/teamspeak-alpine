@@ -2,8 +2,7 @@
 # Copyright (c) 2018 fithwum
 # All rights reserved
 
-TEXT1="Checking server version from teamspeak."
-echo "${TEXT1}"
+echo "Checking server version from teamspeak."
 wget --no-cache https://www.teamspeak.com/versions/server.json -O /ts3temp/server.json
 TS_VERSION_CHECK=$(cat /ts3temp/server.json | grep version | head -1 | awk -F: '{print $4}' | sed 's/[",]//g' | sed "s/checksum//g")
 echo "Latest server version from teamspeak:$TS_VERSION_CHECK"
