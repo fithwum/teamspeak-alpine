@@ -3,18 +3,14 @@
 # All rights reserved
 
 TEXT1="Checking latest teamspeak server version."
-TEXT2="Downloading latest teamspeak server version."
 echo "${TEXT1}"
 wget --no-cache https://www.teamspeak.com/versions/server.json -O /ts3temp/server.json
 TS_VERSION_CHECK=$(cat /ts3temp/server.json | grep version | head -1 | awk -F: '{print $4}' | sed 's/[",]//g' | sed "s/checksum//g")
-echo $TS_VERSION_CHECK
-echo "${TEXT2}"
-wget https://files.teamspeak-services.com/releases/server/${TS_VERSION_CHECK}/teamspeak3-server_linux_amd64-${TS_VERSION_CHECK}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION_CHECK}.tar.bz2
-ls
-rm -frv /ts3temp/ts3server_${TS_VERSION_CHECK}.tar.bz2
+echo "Current teamspeak server version:$TS_VERSION_CHECK"
+rm -frv /ts3temp/server.json
 
 # Variables.
-TS_VERSION="3.5.1"
+TS_VERSION="TS_VERSION_CHECK"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
 
 # Main install (alpine).
