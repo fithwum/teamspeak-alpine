@@ -2,12 +2,12 @@
 # Copyright (c) 2018 fithwum
 # All rights reserved
 
-# Teamspeak server version check.
+# Variables.
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
 
-# Main Install (alpine).
-# Download & unpack teamspeak3 files & move into /ts3server if needed.
+# Main install (alpine).
+# Check for files in /ts3server and download/create if needed.
 if [ -e "${CHANGELOG}" ]
 	then
 		echo "INFO ! ts3server is ${TS_VERSION} ... checking that ini/sh files exist before running current docker."
@@ -37,7 +37,7 @@ if [ -e "${CHANGELOG}" ]
 			rm -fr /ts3temp/serverfiles/*
 fi
 
-# Check if the ini/sh files exist in /ts3server and copy if needed.
+# Check if the ini/sh files exist in /ts3server and download/create if needed.
 if [ -e /ts3server/ts3server_minimal_runscript.sh ]
 	then
 		echo "INFO ! ts3server_minimal_runscript.sh found ... will not download."
@@ -68,14 +68,14 @@ fi
 
 sleep 1
 
-# set permissions.
+# Set permissions.
 chown 99:100 -R /ts3server
 chmod 776 -R /ts3server
 chmod +x -v /ts3server/ts3server_minimal_runscript.sh
 chmod +x -v /ts3server/ts3server
 sleep 1
 
-# run the server.
+# Run.
 echo "INFO ! Starting ts3server ${TS_VERSION} ..."
 exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
 
