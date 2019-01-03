@@ -15,7 +15,7 @@ echo "Latest server version from teamspeak:$TS_VERSION"
 if [ -e "${CHANGELOG}" ]
 	then
 		echo "INFO ! ts3server is ${TS_VERSION} ... checking that ini/sh files exist before running current docker."
-		rm -frv /ts3temp/server.json
+		rm -fr /ts3temp/server.json
 	else
 		echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
 			sleep 1
@@ -23,8 +23,8 @@ if [ -e "${CHANGELOG}" ]
 			echo "(this will take some time if you have uploaded many/large files)"
 			cp -R /ts3server/files/. /ts3temp/serverfiles/files/
 			cp -R /ts3server/logs/. /ts3temp/serverfiles/logs/
-			cp  /ts3server/*.ini /ts3temp/serverfiles
-			cp  /ts3server/*.sh /ts3temp/serverfiles
+			cp /ts3server/*.ini /ts3temp/serverfiles
+			cp /ts3server/*.sh /ts3temp/serverfiles
 			rm -fr /ts3server/*
 			cp -R /ts3temp/serverfiles/. /ts3server/
 			rm -fr /ts3temp/serverfiles/*
@@ -34,13 +34,13 @@ if [ -e "${CHANGELOG}" ]
 			tar -xf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
 			sleep 1
 			rm -fr /ts3temp/serverfiles/ts3server_startscript.sh
-			rm -frv /ts3temp/ts3server_${TS_VERSION}.tar.bz2
+			rm -fr /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 			cp -uR /ts3temp/serverfiles/. /ts3server/
 			sleep 1
 			mv /ts3server/redist/libmariadb.so.2 /ts3server/libmariadb.so.2
 			mv /ts3server/CHANGELOG ${CHANGELOG}
 			rm -fr /ts3temp/serverfiles/*
-			rm -frv /ts3temp/server.json
+			rm -fr /ts3temp/server.json
 fi
 
 # Check if the ini/sh files exist in /ts3server and download/create if needed.
@@ -77,8 +77,8 @@ sleep 1
 # Set permissions.
 chown 99:100 -R /ts3server
 chmod 776 -R /ts3server
-chmod +x -v /ts3server/ts3server_minimal_runscript.sh
-chmod +x -v /ts3server/ts3server
+chmod +x /ts3server/ts3server_minimal_runscript.sh
+chmod +x /ts3server/ts3server
 sleep 1
 
 # Run.
