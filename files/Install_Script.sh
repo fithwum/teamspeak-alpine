@@ -9,14 +9,12 @@ wget --no-cache https://www.teamspeak.com/versions/server.json -O /ts3temp/serve
 TS_VERSION_CHECK=$(cat /ts3temp/server.json | grep version | head -1 | awk -F: '{print $4}' | sed 's/[",]//g' | sed "s/checksum//g")
 TS_VERSION=${TS_VERSION_CHECK}
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
-echo " "
 echo "Latest server version from teamspeak:$TS_VERSION"
 
 # Main install (alpine).
 # Check for files in /ts3server and download/create if needed.
 if [ -e "${CHANGELOG}" ]
 	then
-		echo " "
 		echo "INFO ! ts3server is ${TS_VERSION} ... checking that ini/sh files exist before running current docker."
 		rm -fr /ts3temp/server.json
 	else
@@ -42,7 +40,6 @@ fi
 # Check if the ini/sh files exist in /ts3server and download/create if needed.
 if [ -e /ts3server/ts3server_minimal_runscript.sh ]
 	then
-		echo " "
 		echo "INFO ! ts3server_minimal_runscript.sh found ... will not download."
 	else
 		echo " "
@@ -53,7 +50,6 @@ if [ -e /ts3server/ts3server_minimal_runscript.sh ]
 fi
 if [ -e /ts3server/ts3db_mariadb.ini ]
 	then
-		echo " "
 		echo "INFO ! ts3db_mariadb.ini found ... will not download."
 	else
 		echo " "
@@ -64,7 +60,6 @@ if [ -e /ts3server/ts3db_mariadb.ini ]
 fi
 if [ -e /ts3server/ts3server.ini ]
 	then
-		echo " "
 		echo "INFO ! ts3server.ini found ... will not download."
 	else
 		echo " "
