@@ -3,37 +3,42 @@
 # All rights reserved
 
 # Variables.
+echo " "
 echo "Checking server version from teamspeak."
 wget --no-cache https://www.teamspeak.com/versions/server.json -O /ts3temp/server.json
 TS_VERSION_CHECK=$(cat /ts3temp/server.json | grep version | head -1 | awk -F: '{print $4}' | sed 's/[",]//g' | sed "s/checksum//g")
 TS_VERSION=${TS_VERSION_CHECK}
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
+echo " "
 echo "Latest server version from teamspeak:$TS_VERSION"
 
 # Main install (alpine).
 # Check for files in /ts3server and download/create if needed.
 if [ -e "${CHANGELOG}" ]
 	then
+		echo " "
 		echo "INFO ! ts3server is ${TS_VERSION} ... checking that ini/sh files exist before running current docker."
 		rm -fr /ts3temp/server.json
 	else
+		echo " "
 		echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
-			sleep 1
-			echo "INFO ! Preserving settings/logs/userfiles."
+			echo " "
+			echo "INFO ! Preserving settings/logs/userfiles in /ts3temp/serverfiles."
 			echo "INFO ! (this might take some time)"
 			cp -R /ts3server/files/. /ts3temp/serverfiles/files/
 			cp -R /ts3server/logs/. /ts3temp/serverfiles/logs/
 			cp /ts3server/*.ini /ts3temp/serverfiles
 			cp /ts3server/*.sh /ts3temp/serverfiles
-			echo "INFO ! Clearing old teamspeak files"
+			echo " "
+			echo "INFO ! Clearing old teamspeak files."
 			rm -fr /ts3server/*
-			echo "INFO ! Copying files back from temp folder"
+			echo " "
+			echo "INFO ! Copying files back from /ts3temp/serverfiles."
 			echo "INFO ! (this might take some time)"
 			cp -R /ts3temp/serverfiles/. /ts3server/
 			rm -fr /ts3temp/serverfiles/*
 			sleep 1
 			wget --no-cache https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_alpine-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
-			sleep 1
 			tar -xf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
 			sleep 1
 			rm -fr /ts3temp/serverfiles/ts3server_startscript.sh
@@ -49,8 +54,10 @@ fi
 # Check if the ini/sh files exist in /ts3server and download/create if needed.
 if [ -e /ts3server/ts3server_minimal_runscript.sh ]
 	then
+		echo " "
 		echo "INFO ! ts3server_minimal_runscript.sh found ... will not download."
 	else
+		echo " "
 		echo "WARNING ! ts3server_minimal_runscript.sh not found ... will download new copy."
 			wget --no-cache https://raw.githubusercontent.com/fithwum/files-for-dockers/master/scripts/ts3server_minimal_runscript.sh -O /ts3temp/inifiles/ts3server_minimal_runscript.sh
 			cp /ts3temp/inifiles/ts3server_minimal_runscript.sh /ts3server/
@@ -58,8 +65,10 @@ if [ -e /ts3server/ts3server_minimal_runscript.sh ]
 fi
 if [ -e /ts3server/ts3db_mariadb.ini ]
 	then
+		echo " "
 		echo "INFO ! ts3db_mariadb.ini found ... will not download."
 	else
+		echo " "
 		echo "WARNING ! ts3db_mariadb.ini not found ... will download new copy."
 			wget --no-cache https://raw.githubusercontent.com/fithwum/files-for-dockers/master/files/ts3db_mariadb.ini -O /ts3temp/inifiles/ts3db_mariadb.ini
 			cp /ts3temp/inifiles/ts3db_mariadb.ini /ts3server/
@@ -67,8 +76,10 @@ if [ -e /ts3server/ts3db_mariadb.ini ]
 fi
 if [ -e /ts3server/ts3server.ini ]
 	then
+		echo " "
 		echo "INFO ! ts3server.ini found ... will not download."
 	else
+		echo " "
 		echo "WARNING ! ts3server.ini not found ... will download new copy."
 			wget --no-cache https://raw.githubusercontent.com/fithwum/files-for-dockers/master/files/ts3server.ini -O /ts3temp/inifiles/ts3server.ini
 			cp /ts3temp/inifiles/ts3server.ini /ts3server/
@@ -82,10 +93,10 @@ chown 99:100 -R /ts3server
 chmod 776 -R /ts3server
 chmod +x /ts3server/ts3server_minimal_runscript.sh
 chmod +x /ts3server/ts3server
-sleep 1
 
 # Run.
-echo "INFO ! Starting ts3server ${TS_VERSION} ..."
+echo " "
+echo "INFO ! Starting ts3server ${TS_VERSION}"
 exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
 
 exit
