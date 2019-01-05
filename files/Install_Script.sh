@@ -24,8 +24,8 @@ if [ -e "${CHANGELOG}" ]
 		echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
 			echo " "
 			echo "INFO ! Clearing old teamspeak files."
-			rm -f /ts3server/CHANGELOG* /ts3server/lib* /ts3server/ts3server
-			rm -fr /ts3server/doc /ts3server/redist /ts3server/serverquerydocs /ts3server/tsdns
+			rm -fv /ts3server/CHANGELOG* /ts3server/lib* /ts3server/ts3server
+			rm -frv /ts3server/doc /ts3server/redist /ts3server/serverquerydocs /ts3server/tsdns
 			wget --no-cache https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_alpine-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 			tar -xf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
 			sleep 1
