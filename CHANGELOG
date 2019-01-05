@@ -8,3 +8,7 @@ Changes:
 
 	Added an automatic check for new teamspeak server verstion on startup.
 	added more information output to indicate what is happening.
+	
+2019-1-5
+
+	changed the way user files are preserved during update process not it is much faster.
