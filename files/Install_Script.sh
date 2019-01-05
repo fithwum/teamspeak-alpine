@@ -23,20 +23,9 @@ if [ -e "${CHANGELOG}" ]
 		echo " "
 		echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
 			echo " "
-			echo "INFO ! Preserving settings/logs/userfiles in /ts3temp/serverfiles."
-			echo "INFO ! (this might take some time)"
-			cp -R /ts3server/files/. /ts3temp/serverfiles/files/
-			cp -R /ts3server/logs/. /ts3temp/serverfiles/logs/
-			cp /ts3server/*.ini /ts3temp/serverfiles
-			cp /ts3server/*.sh /ts3temp/serverfiles
-			echo " "
 			echo "INFO ! Clearing old teamspeak files."
-			rm -fr /ts3server/*
-			echo " "
-			echo "INFO ! Copying files back from /ts3temp/serverfiles."
-			echo "INFO ! (this might take some time)"
-			cp -R /ts3temp/serverfiles/. /ts3server/
-			rm -fr /ts3temp/serverfiles/*
+			rm -f /ts3server/${CHANGELOG} /ts3server/lib* /ts3server/ts3server
+			rm -fr /ts3server/doc /ts3server/redist /ts3server/serverquerydocs /ts3server/tsdns
 			wget --no-cache https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_alpine-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 			tar -xf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
 			sleep 1
